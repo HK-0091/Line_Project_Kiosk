@@ -1,0 +1,44 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="utf-8")
+        link(rel="shortcut icon" type="image/x-icon" href="./images/mascot.ico")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet") 
+        link(rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css")
+        link(rel="stylesheet" href="./style/admin.css")
+        script(src="http://code.jquery.com/jquery-latest.min.js")
+        title Yogurt world | 관리자 페이지
+    body
+        header
+            a(href="/")
+                img(src="./images/homeBtn.png" class="menuHomeBtn")
+            img(class="menuMainLogo" src="./images/logo/logoTitle.svg")
+        .headerTitleName 총 매출액    
+        main
+            section.listSection
+                .headerList
+                    .colTime 주문 날짜 / 시간
+                    .colMember 회원 번호
+                    .colPrice 결제 금액
+                ul
+                    each inVal in monthRow
+                        li
+                            .colTime= inVal.Date
+                            if inVal.mobile
+                                .colMember= inVal.mobile
+                            else 
+                                .colMember 비회원 
+                            .colPrice= inVal.totalPrice 
+                            
+                .footerList
+                    .monthPay 총 매출액 : 
+                        span= totalPrice.totalPrice
+                script(type="text/javascript" src="./js/Comma.js")
+      
+
+            

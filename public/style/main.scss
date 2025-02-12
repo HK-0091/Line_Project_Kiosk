@@ -1,0 +1,1975 @@
+@charset "UTF-8";
+@import "reset.scss";
+@import "mixin.scss";
+
+$signature_blue: #0068b7;
+$delete_gray: #d8d7d7;
+$basket_blue: #064db7;
+$point_orange: #f58220;
+$loading_orange: #c2671a;
+$btn_gray: #f1f1f1;
+$point_green: #a6ca4cff;
+//////////////////////////
+
+//////////////////////////
+body {
+    box-shadow: 0px 0px 5px 5px $btn_gray;
+    position: relative;
+    width: 1080px; 
+    height: 1920px; 
+    margin:0 auto;
+}
+
+//@mixin tempA{ ~~~ }
+//@include tempA
+.menuWaitBox{
+    position: absolute;
+    width: 80%;
+    height: 55rem;
+    border: 3px solid gray;
+    border-radius: 5rem;
+    top: 50%;
+    left: 50%;
+    z-index: 10000;
+    margin-left: -43rem;
+    margin-top: -28rem;
+    background-color: white;
+    display: none;
+    .menuWaitSpan{
+        background-color: transparent;
+        padding-top: 4%;
+        height: 20rem;
+        text-align: center;
+        line-height: 8rem;
+        font-size: 6rem;
+    }
+    .menuWaitCount{
+        background-color: tr;
+        height: 15rem;
+        text-align: center;
+        line-height: 15rem;
+        font-size: 7rem;
+    }
+    .menuWaitBtnBox{
+        background-color: transparent;
+        height: 15rem;
+        display: flex;
+        justify-content: center;
+        .menuWaitBtn{
+            background-color: $point_orange;
+            text-align: center;
+            line-height: 10rem;
+            font-size: 6rem;
+            height: 10rem;
+            width: 50rem;
+            color: white;
+            border-radius: 3rem;
+        }
+    }
+}
+.homeMainModal, .menuMainScreenView{
+    position: absolute;
+    width: 108rem;
+    height: 192rem;
+}
+.homeMainModal{
+    z-index: 100;
+    background-color: white;
+    .homeMainScreenView{
+        z-index: 90;
+    }
+    .homeMainLogoBox{
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        margin-left: -40rem;
+        width: 80rem;
+        
+        img {
+            margin-top: -5rem;
+            margin-left: 8.5rem;
+            width: 80%;
+        }
+    }
+    .homeMascotBox{
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        margin-left: -28rem;
+        margin-top: -42rem;
+        width: 56rem;
+        height: 65.6rem;
+    }
+    .homeMascot, .homeMainTitle{
+        height: 100%;
+    }
+    .homeMainBtnA, .homeMainBtnB {
+        background-color: white;
+        color: #666;
+        width: 38rem;
+        height: 33rem;
+        font-size: 8rem;
+        letter-spacing: 2rem;
+        text-align: center;
+        line-height: 23rem;
+        border-radius: 3rem;
+        font-family: 'Jua', sans-serif;
+        padding-top: 1.6rem;
+        padding-left: 2rem;
+
+
+        &:active{
+            background: $signature_blue;
+            opacity: 0.8;
+            color: white;
+        }
+
+
+    }
+   
+   
+}
+.menuMainScreenHead{
+    width: 100%;
+    height: 23.04rem;
+    display: flex;
+    align-items: center;
+    .menuSelectIO{
+        background-color: $signature_blue;
+        width: 19.2rem;
+        height: 8rem;
+        border-radius: 1.28rem;
+        position: absolute;
+        top: 3%;
+        left: 3%;
+   
+        .selectStart {
+            color: white;
+            height: 8rem;
+            line-height: 7.5rem; 
+            font-size: 4rem;
+            text-align: center;
+        }
+
+        .selectList {
+            display: none;
+            background: rgb(151, 210, 255);
+            border-radius: 1.28rem;
+
+            .packing {
+                height: 8rem;
+                border: 0.2rem solid white; 
+                border-top: none;      
+                line-height: 8rem; 
+                font-size: 4rem;
+                text-align: center; 
+                line-height: 7.5rem;
+            }
+
+            
+            .store {
+                margin-top: -0.3rem;
+                height: 8rem;
+                border: 0.2rem solid white;    
+                border: {
+                    bottom-left-radius: 1.28rem;
+                    bottom-right-radius: 1.28rem;
+                } 
+                line-height: 8rem; 
+                font-size: 4rem;
+                text-align: center;
+                line-height: 7.5rem;
+            }
+        }
+    }
+    .menuMainLogo{
+        width: 46rem;
+        position: absolute;
+        top: 3%;
+        right: 3%;
+    }
+    .menuHomeBtn{
+        position: absolute;
+        top: 2.5%;
+        left: 23%;
+        width: 8rem;
+    }
+    .menuHomeBtn:hover{
+        cursor: pointer;
+    }
+    .menuHomeBtn:active{
+        opacity: 0.8;
+    }
+}
+.adminPageBtn {
+    position:absolute;
+    top: 1.5%;
+    left: 88.2%;
+    width: 10rem;
+    height: 10rem;
+    z-index: 1;
+    font-size: 3rem;
+    opacity: 0.5;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+}
+
+.adminModalPage {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 108rem;
+    height: 192rem;
+    background-color: rgb(0,0,0);
+    opacity: 0.9;
+}
+.adminModalContent {
+    width:80rem; 
+    height: 160rem;
+    background:#fff; 
+    border-radius:10px;
+    position:relative; 
+    top:50%; left:50%;
+    transform: translate(-50%, -50%);
+    text-align:center;
+    box-sizing:border-box; 
+    padding:74px 0;
+    line-height:23px;
+}
+.adminEnterName {
+    margin-top: 10rem;
+    width: 80rem;
+    height: 20rem;
+    color: rgb(0,0,0);
+    font-size: 8rem;
+    text-align: center;
+    line-height: 20rem;
+}
+.inputPass {
+    width: 60rem;
+    height: 20rem;
+    border: 1rem solid black;
+    line-height: 20rem;
+    font-size: 8rem;
+    text-align: center;
+}
+.adminNumPad {
+    margin-top: 5rem;
+    margin-left: 10rem;
+    width: 60rem;
+    height: 70rem;
+    background-color: #fff;
+}
+
+.adminFirstLine{
+    display: flex;
+    justify-content: space-around;
+}
+.adminSecondLine{
+    display: flex;
+    justify-content: space-around;
+}
+.adminThirdLine{
+    display: flex;
+    justify-content: space-around;
+}
+.adminLastLine{
+    display: flex;
+    justify-content: space-around;
+}
+.adminNum1, .adminNum2, .adminNum3, .adminNum4, .adminNum5, .adminNum6, .adminNum7, .adminNum8, .adminNum9, .adminNum0{
+    @include adminNumPad;
+    width: 15rem;
+}
+.adminNumDelete{
+    @include adminNumPad;
+    font-size: 3.5rem;
+    width: 15rem;
+    background: $delete_gray; 
+    color: #333;
+}
+.adminNumOneX{
+    @include adminNumPad;
+    font-size: 4.5rem;
+    width: 15rem;
+    background: $delete_gray;
+    
+    i {
+        color: #333;
+    }
+}
+
+.close {
+    float:left;
+    width: 40rem;
+    height: 20rem;
+    background-color: #fff;
+    color: block;
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20rem;
+    cursor:pointer;
+    transition: 0.15s;
+}
+
+.close:hover {
+    color: gold;
+}
+.adminEnterBtn {
+    float: right;
+    width: 40rem;
+    height: 20rem;
+    background-color: #fff;
+    color: block;
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20rem;
+    cursor: pointer;
+    transition: 0.15s;
+    
+    
+}
+.adminEnterBtn:hover {
+    color: gold;
+}
+
+.menuMainNav{
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .menuMenu{
+        background-color: white;
+        width: 24rem;
+        height: 11.456rem;
+        display: inline-block;
+       // border-radius: 2.72rem;
+        font-size: 3.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-right-radius: 2.72rem;
+        border-top-left-radius: 2.72rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+.menuMainSection{
+    width: 100%;
+    height: 99.84rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+/////
+.menuItemBox{
+    height: 33.3333%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    font-size: 3rem;
+}
+
+
+.menuItem {
+    position: relative;
+    width: 23%;
+    height: 100%;
+    margin-right: 1rem;
+    margin-left: 1rem;
+
+
+    div {
+        display: none;
+        position: absolute;
+        top: 1.5rem;
+        left: 0;
+        border-radius: 1rem;
+        width: 21rem;
+        height: 28.5rem;
+        background: rgb(224, 238, 255);
+        box-shadow: 0 0 1rem rgb(176, 213, 255) inset;
+
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 18rem;
+            font-size: 1.8rem;
+            line-height: 3rem;
+        }
+    }
+    
+    .xi-zoom-in {  
+        position: absolute;
+        background: white;
+        top: 3rem;
+        right: 1rem;
+        width: 4rem;
+        height: 4rem;
+        font-size: 4rem;
+        color: $point_green;
+        border-radius: 3rem; 
+    }
+}
+.menuItem:hover {
+    cursor: pointer;
+}
+.menuItem:active{
+    opacity: 0.8;
+}
+
+
+.menuItem > img {
+    width: 100%;
+    border-radius: 20%;
+}
+.menuItem > p {
+    font-size: 2.5rem;
+    margin-top: -2.5rem;
+    text-align: center;
+}
+.emptyTempMenuCol {
+    border: 0.7rem solid white;
+    width: 23%;
+    height: 90%;
+    border-radius: 2rem;
+}
+//92, 96.64
+
+
+//////
+    .menuMenuSlideA{
+        position: absolute;
+        top: 84.32rem;
+        left: 1.3rem;
+        border-right: 4.4rem solid $signature_blue;
+        border-top: 3.5rem solid transparent;
+        border-bottom: 3.5rem solid transparent;
+        border-left: 0rem solid transparent;
+    }
+    .menuMenuSlideB{
+        position: absolute;
+        top: 84.32rem;
+        right: 1.8rem;
+        border-right: 0rem solid transparent;
+        border-top: 3.5rem solid transparent;
+        border-bottom: 3.5rem solid transparent;
+        border-left: 4.4rem solid $signature_blue;
+    }
+
+    .menuMenuSlide:hover{
+        cursor: pointer;
+    }
+    .menuMenuSlide:active{
+        opacity: 0.8;
+    }
+    .menuMenuBox{
+        position: absolute;
+        width: 92rem;
+        height: 96.64rem;
+        overflow: hidden;
+        .menuMenuBoxA, .menuMenuBoxB, .menuMenuBoxC{
+            width: 92rem;
+            height: 96.64rem;
+            float: left;
+            font-size: 10rem;
+        }
+        .menuMenuBoxA{
+            background-color: white;
+        }
+        .menuMenuBoxB{
+            background-color: orange;
+        }
+        .menuMenuBoxC{
+            background-color: yellow;
+        }
+    }
+}
+.menuMainFooter{
+    width: 100%;
+    height: 28%;
+    background-color: #F9F9F9;
+    .menuCart{
+        width: 100%;
+        height: 60%;
+        overflow: auto;
+
+        i {
+            font-size: 3.5rem;
+            line-height: 3rem;
+            padding-bottom: 1.7rem;
+            color: white;
+            padding-left: 0.5rem;
+            font-weight: 900;
+        }
+
+        .menuSelectValues{
+            overflow: hidden;
+            width: 100%;
+            height: 10rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0.1rem 0 0 gray;
+        }
+        .menuSelect{
+            width: 100%;
+            height: 70rem;
+            font-size: 6rem;
+        }
+        &::-webkit-scrollbar {
+                display: none;
+        }
+        .menuCart > button, div{
+            display: inline-block;
+        }
+        .menuName{
+            margin-left: 4rem;
+            font-size: 4rem;
+            line-height: 6rem;
+            width: 40rem;
+            height: 6rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .menuPMD{
+            background-color: $signature_blue;
+            border-radius: 1rem;
+            width: 7rem;
+            height: 6.5rem;
+            color: white;
+        }
+        .menuCount{
+            font-size: 4.3rem;
+            line-height: 6rem;
+            text-align: center;
+            width: 10rem;
+            height: 6rem;
+        }
+        .menuPrice{
+            font-size: 4rem;
+            line-height: 6rem;
+            width: 40rem;
+            height: 6rem;
+            text-align: right;
+        }
+        .menuDelete{
+            background-color: #e20101;
+            margin: {
+                left: 3.5rem;
+                right: 3.5rem;
+            }
+
+            .xi-close {
+                color: white;
+                font-weight: 900;
+                font-size: 3.5rem;
+            }
+        }
+    }
+    .menuResultValue{
+        width: 100%;
+        height: 18%;
+        background-color: white;
+        display: flex;
+        justify-content: end;
+        
+        .menuTotalResultText, .menuTotalResultNumber{
+            display: inline-block;
+            font-size: 4rem;
+            margin-top: 1.7rem;
+        }
+        .menuTotalResultNumber{
+            height: 100%;
+            width: 40rem;
+            text-align: right;
+            padding-right: 6rem;
+        }
+    }
+    .menuFootBtnBox{
+        width: 100%;
+        height: 23%;
+    }
+    .menuCartBtn, .menuPaymentBtn{
+        background-color: $signature_blue;
+        width: 50%;
+        float: left;
+        height: 100%;
+        text-align: center;
+        line-height: 12.3648rem;
+        font-size: 5rem;
+        color: white;
+        border-radius: 0;
+    }
+
+    .menuCartBtn {
+        cursor: default;
+    }
+
+    .menuCartNum {
+        position: absolute;
+        z-index: 50;
+        bottom: 3%;
+        left: 37%;
+        display: inline-block;
+        width: 5.5rem;
+        height: 5.5rem;
+        border-radius: 50%;
+        background: #e20101;
+        color: white;
+        font-size: 3.5rem;
+        text-align: center;
+        line-height: 4.7rem;
+        padding-right: 0.2rem;
+    }
+}
+
+
+/////////////////////토핑 선택 모달창/////////////////////
+.toppingWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5555555555;
+    //display: none;
+    height: 163rem;
+    
+    .toppingFruit {
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
+        margin: 0 auto;
+        margin-top: 18rem;
+       
+        .toppingImg {         
+            width: 43rem;
+            height: 43rem;
+            background: pink;
+            border-radius: 50%;
+            float: left;
+        }
+
+        .toppingFruitList {
+            ul {
+                width: 35rem;
+
+                li {
+                    margin: {
+                        top: 3rem;
+                        left: 2rem;
+                        bottom: 4rem;
+                    }
+                    width: 40%;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 3.3rem;
+                }
+            }
+        }
+    }
+
+    .toppingNutList {
+        clear: both;
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+            margin: 0 auto;
+            margin-top: 14rem;
+
+            li {
+                width: 13rem; 
+
+                img {
+                    width: 100%;
+                    height: 13rem;
+
+                }
+
+                p {
+                    width: 20rem;
+                    text-align: center;
+                    margin-top: 1.9rem;
+                    margin-left: -3.2rem;
+                    font-size: 3rem;
+                }
+            }
+        }
+    }
+
+    .toppingSpoon {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 14rem;
+        text-align: center;
+
+        p { 
+            float: left;
+            padding-top: 1.2rem;
+            font-size: 3.5rem;
+        }
+
+        button {
+            margin-left: 3rem;
+            padding-top: 0.6rem;
+            width: 9rem;
+            height: 7rem;
+            border-radius: 1rem;
+            font-size: 4rem;
+        }
+
+        .spoonYes {
+            background: #a6ca4cff;
+            color: white;
+        }
+    }
+
+    .toppingBtns {
+        clear: both;
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+        margin-top: 16rem;
+        width: 80%;
+
+        button {
+            padding-top: 0.9rem;
+            @include twoBtns;
+            width: 46%;
+        }
+
+        .toppingYes {
+            background: $point_orange;
+            color: white;
+        }
+
+        .toppingNo {
+            background: $btn_gray;
+            color: #333;
+        }
+    }
+}
+
+/////////////////////카드결제/////////////////////
+.creditCardWrap {
+    text-align: center;
+   
+
+    .creditCardContent {
+        margin:0 auto;
+        padding-top: 17rem;
+        width: 70%;
+
+        .creditCardTitle {
+            font-size: 5.5rem;
+            font-weight: 900;
+        }
+
+
+        .creditCardImgs {
+            margin: 0 auto;
+            margin-top: 2rem;
+            width: 80%;
+            height: 60rem;
+
+            .creditCardSlotImg {
+                margin-top: 5rem;
+                width: 70%;
+            }
+
+            .creditCardImg {
+                margin-top: 1.5rem;
+                width: 65%;
+                transform: rotate(90deg);
+                animation: creditCardAni infinite 2s;
+            }
+        }
+        .creditCardText {
+            margin: 0 auto;
+            margin-top: 5rem;
+            font-size: 3.8rem;
+            width: 55rem;
+            line-height: 5rem;
+        }
+
+        .creditCardWarning {
+            margin-top: 3rem;
+            color: #e20101;
+            font-size: 3.5rem;
+        }
+    }
+
+    .creditCardBtns {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            @include twoBtns;
+            margin-top: 8rem;
+        }
+
+        .creditCardCancleBtn {
+            background: $btn_gray;
+            color: #333;
+        }
+    }
+}
+
+/////////////////////신용 카드 애니/////////////////////
+@keyframes creditCardAni {
+    0% {
+        margin-top: 10rem;
+    }
+}
+
+/////////////////////삼성 페이 결제/////////////////////
+.samsungPayWrap {
+    text-align: center;
+   
+    .samsungPayContent {
+        margin: 0 auto;
+        padding-top: 17rem;
+        width: 70%;
+
+        .samsungPayTitle {
+            font-size: 5.5rem;
+            font-weight: 900;
+        }
+      
+        .samsungPayImgs {
+            margin: 0 auto;
+            margin-top: 2rem;
+            width: 90%;
+            height: 53rem;
+
+            .samsungPaySlotImg {
+                display: block;
+                margin: 0 auto;
+                margin-top: 7rem;
+                width: 50%;
+            }
+
+            .samsungPayImg {
+                width: 55%;
+                margin-top: -1.5rem;
+                animation: samsungPayAni infinite 2s;
+            }
+
+        }
+       
+        .samsungPayText {
+            margin: 0 auto;
+            margin-top: 5rem;
+            font-size: 3.8rem;
+            width: 55rem;
+            line-height: 5rem;
+        }
+
+        .samsungPayWarning {
+            margin-top: 3rem;
+            color: #e20101;
+            font-size: 3.5rem;
+        }
+    }
+
+    .samsungPayBtns {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            @include twoBtns;
+            margin-top: 9rem;
+        }
+
+        .samsungPayCancleBtn {
+            background: $btn_gray;
+            color: #333;
+        }
+    }
+}
+
+/////////////////////신용 카드 애니/////////////////////
+@keyframes samsungPayAni {
+    0% {
+        margin-top: 10rem;
+    }
+}
+
+
+/////////////////////결제 시 금액 표시/////////////////////
+.payTotalPriceBox {
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+
+    .payTotalPrice {
+       color: #e20101;
+       font-size: 4.5rem; 
+       font-weight: 900;
+       line-height: 4.5rem;
+    }
+
+    p:first-child {
+        margin-right: 4rem;
+        font-weight: 900;
+        font-size: 3.7rem;
+        line-height: 4.5rem;
+    }
+}
+
+
+/////////////////////결체 취소 팝업/////////////////////
+.payCanclePopup {
+    position: absolute;
+    z-index: 160;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    display: none;
+    margin: 0 auto;
+    width: 80%;
+    height: 55rem;
+    border-radius: 7rem;
+    border: 3px solid gray;
+    text-align: center;
+    background: white;
+
+    p {
+        margin-top: 14rem;
+        font-size: 5rem;
+    }
+
+    .payCancleBtn {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+        width: 80%;
+
+        button {
+            @include twoBtns;
+            margin-top: 9rem;
+            height: 11rem;
+
+            &:first-child {
+                background: $btn_gray;
+                color: #333;
+            }
+        }
+    }
+}
+
+/////////////////////결제 완료/////////////////////
+.payEndWrap {
+    position: absolute;
+    background: white;
+    width:100%;
+    height:100%;
+    z-index: 150;
+    display: none;
+    margin: 0 auto;
+    padding-top: 30rem;
+    text-align: center;
+    
+    .payEndNotice {
+        width: 100%;
+        margin: 0 auto;
+
+        p:first-child {
+            font-size: 8rem;
+        }
+
+        p:nth-child(2) {
+            font-size: 4.5rem;
+        }
+
+        img {
+            margin-top: 7rem;
+            width: 50%;
+        }
+    }
+
+    .payEndReceipt {
+        margin-top: 1rem;
+        
+        p:first-child {
+            font-size: 4.3rem;
+        }
+
+        p:nth-child(2) {
+            margin-top: 1rem;
+            font-size: 6rem;
+        }
+    }
+
+    .payEndReceiptBtns {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+        margin-top: 11rem;
+        width: 80%;
+
+        button {
+            padding-top: 0.9rem;
+            @include twoBtns;
+            width: 46%;
+        }
+
+        .payEndReceiptYes {
+            background: $point_orange;
+            color: white;
+        }
+
+        .payEndReceiptNo {
+            background: $btn_gray;
+            color: #333;
+        }
+    }
+}
+
+/////////////////////대기 번호 팝업/////////////////////
+.waitingNumPopup {
+    display: none;
+    position: absolute;
+    z-index: 160;
+    margin: 0 auto;
+    top: 48%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    width: 85%;
+    height: 140rem;
+    border-radius: 7rem;
+    border: 3px solid gray;
+    background: white;
+    text-align: center;
+
+    .waitingNumCount {
+        float: right;
+        margin: {
+            top: 4rem;
+            right: 6rem;
+        } 
+        font-size: 5rem;
+    }
+
+    .waitingNum {
+        clear: both;
+        margin-top: 22rem;
+
+        img {
+            width: 70%;
+        }
+
+        p:nth-child(2) {
+            font-size: 7rem;
+            margin-top: -40rem;
+        }
+
+        p:nth-child(3) {
+            font-size: 15rem;
+            font-weight: 900;
+            color: $point_orange;
+        }
+    }
+    
+    .waitingNumText1 {
+        font-size: 3.3rem;
+        margin-top: 14rem;
+    }
+
+    .waitingNumText2 {
+        margin: 0 auto;
+        margin-top: 1.5rem;
+        font-size: 4rem;
+    }
+
+    button {
+        @include twoBtns;
+        margin-top: 9rem;
+        height: 12rem;
+        line-height: 11rem;
+        padding-top: 0.2rem;
+    }
+}
+////////////////////////////////////////////////////////////////////////////////
+.stepBar{
+    margin-top: 23rem;
+}
+.stepImg{
+    width: 108rem;
+    height: 8rem;
+}
+.payChoiceTextOne{
+    @include paymentChoiceText;
+    margin-top: -6.5rem;
+    margin-left: 10rem;
+    font-size: 3rem;
+}
+.payChoiceTextTwo{
+    @include paymentChoiceText;
+    margin-top: -6.5rem;
+    margin-left: 50rem;
+    font-size: 3rem;
+}
+.payChoiceTextThree{
+    @include paymentChoiceText;
+    margin-top: -6.5rem;
+    margin-left: 84rem;
+    font-size: 3rem;
+}
+.payChoiceImg{
+    width: 75rem;
+    height: 90rem;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 11rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.payCardBox{
+    @include paymentBox;
+}
+.paySamsungBox{
+    @include paymentBox;
+}
+.payPointBox{
+    @include paymentBox;
+    
+    img {
+        width: 55%;
+        height: auto;
+        margin-left: 6.8rem;
+    }
+}
+.onlyPayCardBox{
+    @include paymentBox;
+}
+.onlyPaySamsungBox{
+    @include paymentBox;
+}
+.payChoiceCardText{
+    font-size: 3rem;
+    color: #595959;
+    text-align: center;
+    margin-top: 4rem;
+}
+.payChoicePayText{
+    font-size: 3rem;
+    color: #595959;
+    text-align: center;
+    margin-top:2rem;   
+}
+.payChoicePointText{
+    font-size: 3rem;
+    color: #595959;
+    text-align: center;
+    margin-top: 3rem;
+}
+.payChoiceCard{
+    width: 24rem;
+    height: 13.9rem;
+    margin-top: 3rem;
+    margin-left: 3rem;
+}
+.payChoiceSamsung{
+    height: 17rem;
+    margin-left: 6.3rem;
+    margin-top: 2rem;
+}
+.payChoicePoint{
+    width: 19rem;
+    height: 16.1rem;
+    margin-left: 5rem;
+    margin-top: 3rem;
+}
+.payChoicePaymentText{
+    font-size: 3rem;
+    color: #fff;
+    margin-top: 1.5rem;
+}
+.payChoiceResult{
+    font-size: 4.5rem;
+    display: inline-block;
+}
+.bottomBtnBox{
+    margin-top: 20rem;
+    display: flex;
+    justify-content: center;
+}
+.payChoicepaymentTextBox{
+    margin-top: 0.5rem;
+    width: 108rem;
+    height: 8rem;
+    background-color: #0068b7;
+    display: flex;
+    justify-content: center;
+}
+.payChoiceTotalBox{
+    width: 66rem;
+    height: 10rem;
+    float: right;
+    margin-top: 5rem;
+}
+.totalPayment{
+    font-size: 4.5rem;
+    width: 31rem;
+    height: 5rem;
+    display: inline-block;
+    text-align: center;
+}
+.payChoiceBackBtn{
+    width: 35rem;
+    height: 10rem;
+    background-color: $point_orange;
+    color: #fff;
+    font-size: 5rem;
+    border: 0;
+    border-radius: 1.5rem;
+}
+
+
+.toppingModal {
+    display: none;
+}
+.pointNumInputTextBox{
+    display: flex;
+    justify-content: center;
+}
+.pointNumInnumText{
+    font-size: 4.5rem;
+    margin-top: 19rem;
+}
+.pointNumInputBox{
+    display: flex;
+    width: 100rem;
+    height: 90rem;
+    margin: 0 auto;
+    margin-top: 7rem;
+    flex-direction: column;
+    align-items: center;
+}
+/*.inputPointNumPad{
+    background-color: red;
+}
+*/
+.inPhoneNum{
+    text-align: center;
+    width: 45rem;
+    height: 10rem;
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 -2px 4px 4px rgb(234, 234, 234) inset;
+    font-size: 3.5rem;
+    letter-spacing: 0.3rem;
+}
+.pointNumPad{
+    width: 50rem;
+    height: 70rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+.pointFirstLine{
+    display: flex;
+    justify-content: space-around;
+}
+.pointSecondLine{
+    display: flex;
+    justify-content: space-around;
+}
+.pointThirdLine{
+    display: flex;
+    justify-content: space-around;
+}
+.pointLastLine{
+    display: flex;
+    justify-content: space-around;
+}
+.pointNum1, .pointNum2, .pointNum3, .pointNum4, .pointNum5, .pointNum6, .pointNum7, .pointNum8, .pointNum9, .pointNum0{
+    @include pointNumPad;
+}
+.pointNumDelete{
+    @include pointNumPad;
+    font-size: 3.5rem;
+    background: $delete_gray;
+    color: #333;
+}
+.pointNumOneX{
+    @include pointNumPad;
+    font-size: 4.5rem;
+    background: $delete_gray;
+
+    i {
+        color: #333;
+    }
+}
+
+.usePoint1, .usePoint2, .usePoint3, .usePoint4, .usePoint5, .usePoint6, .usePoint7, .usePoint8, .usePoint9, .usePoint0{
+    @include pointNumPad;
+}
+.usePointDelete{
+    @include pointNumPad;
+    font-size: 3.5rem;
+    background: $delete_gray;
+    color: #333;
+}
+.usePointOneX{
+    @include pointNumPad;
+    font-size: 4.5rem;
+    background: $delete_gray;
+    
+    i {
+        color: #333;
+    }
+}
+
+
+
+
+
+.pointNumBotBox{
+    display: flex;
+    width: 70rem;
+    margin: 0 auto;
+    margin-top: -6rem;
+    justify-content: space-between;
+}
+
+.resulayPointNumBotBox {
+    display: flex;
+    width: 70rem;
+    margin: 0 auto;
+    margin-top: 12rem;
+    justify-content: space-between;
+}
+
+.usePointBtns {
+    display: flex;
+    width: 70rem;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.pointNumBackBtn{
+    @include twoBtns;
+    background-color: $btn_gray;
+    color: #333;
+}
+.pointNumComBtn{
+    color: #fff; 
+    background-color: $point_orange;
+    @include twoBtns;
+}
+.usePointBox{
+    margin-top: 13rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .inPointBoxTotalPrice {
+        font-size: 3.5rem;
+        letter-spacing: 0.2rem;
+        margin-left: 25rem;
+    }
+}
+.pointNow{ 
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.pointUse{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.usePointNowText{
+    font-size: 4rem;
+}
+.usePointText{ 
+    font-size: 4rem;
+}
+.nowPoint{
+    text-align: center;
+    width: 37rem;
+    height: 10rem;
+    margin-left: 4rem;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 -2px 4px 4px rgb(234, 234, 234) inset;
+    font-size: 3.5rem;
+    letter-spacing: 0.3rem;
+}
+.pointUnit{
+    font-size: 3rem;
+    margin-left: 1rem;
+}
+.usePointScreen{
+    text-align: center;
+    font-size: 3.5rem;
+    width: 37rem;
+    height: 10rem;
+    border: 0;
+    margin-left: 4rem;
+    border-radius: 10px;
+    box-shadow: 0 -2px 4px 4px rgb(234, 234, 234) inset;
+    letter-spacing: 0.3rem;
+}
+.pointGuideBox{
+    margin-top: 5rem;
+    text-align: center;
+}
+.usePointGuide{
+    font-size: 3.5rem;
+}
+.resultPointBox{
+    margin: 0 auto;
+    margin-top: 30rem;
+    width: 70rem;
+    height: 70rem;
+
+    p {
+        line-height: 5rem;
+        padding-top: 2.1rem;
+    }
+}
+.resultPointPaymentBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.resultPointusePointBox{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.resultPointTotalPayBox{
+    margin-top:  4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.resultPointText{
+    width: 23rem;
+    font-size: 4rem;
+}
+.payUnit{
+    font-size: 4rem;
+}
+.resultPointPay{
+    @include resultPointBox;
+    font-size: 4.5rem;
+    padding-right: 4rem;
+    text-align: right;
+}
+.resultPointUsepoint{
+    @include resultPointBox;
+    font-size: 4.5rem;
+    text-align: right;
+    padding-right: 4rem;
+}
+.resultPointPayTotal{
+    @include resultPointBox;
+    font-size: 4.5rem;
+    text-align: right;
+    padding-right: 4rem;
+
+}
+.resultPointGuide{
+    font-size: 3.5rem;
+    margin-top: 4rem;
+    float: right;
+    margin-right: 5rem;
+}
+.resultPointQst{
+    font-size: 4rem;
+    text-align: center;
+}
+.usePointbackBtn{
+    @include twoBtns;
+    background-color: $btn_gray;
+    color: #333;
+}
+.usePointcomBtn{
+    color: #fff; 
+    background-color: $point_orange;
+    @include twoBtns;
+}
+.resultPointBackBtn{
+    @include twoBtns;
+    color: #333;
+    background-color: $btn_gray;
+}
+.resultPointComBtn{
+    color: #fff; 
+    background-color: $point_orange;
+    @include twoBtns;
+}
+.selectPayment{
+    height: 192rem;
+    background: white;
+    position: absolute;
+    z-index: 130;
+    display: none;
+}   
+
+
+.payChoiceTitle {
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.paymentMainLogo{
+    width: 46rem;
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    margin-left: -23rem;
+}
+
+.homeMainPortTextBox{
+    width: 108rem;
+    height: 8rem;
+    background-color: #666;
+}
+.homeMainPortText{
+    font-size: 2.5rem;
+    color: $btn_gray;
+    line-height: 8rem;
+    margin-left: 3rem;
+}
+.homeMainGrayBox{
+    background-color: #F0E9D6;
+    height: 43.6rem;
+}
+.homeMainBtnBox{
+    margin: 0 auto;
+    padding-top: 5.05rem;
+    display: flex;
+    justify-content: space-around;
+    height: 43.6rem;
+    width: 93%;
+}
+.logoImg{
+    position: absolute;
+    width: 90rem;  
+    margin-top: 67rem;
+    margin-left: 8rem;
+}
+.homeMainBlueDiv{
+    width: 108rem;
+    height: 140.4rem;
+    background-color: $signature_blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img{
+    width: 108rem;
+    height: 140.4rem;
+    display: none;
+}
+#slideBox{
+    width: 108rem;
+    height: 140.4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.img.on{
+    display: block;
+}
+.onlyPaymentBox{
+    position: absolute;
+    background-color: white;
+    display: none;
+    width: 108rem;
+    height: 192rem;
+    z-index: 150;
+}
+.disabledPoint{
+    @include paymentBox;
+}
+.onlyPayBackBtn{
+    width: 35rem;
+    height: 10rem;
+    background-color: $point_orange;
+    color: #fff;
+    font-size: 5rem;
+    border: 0;
+    border-radius: 1.5rem;
+}
+.resultTotalPayment, .payChoiceResult{
+    display: inline-block;
+    margin-left: 5rem;
+    font-size: 4rem;
+}
+
+.wrongPhoneNum {
+    position: absolute;
+    z-index: 160;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    display: none;
+    margin: 0 auto;
+    width: 80%;
+    height: 55rem;
+    border-radius: 5rem;
+    border: 3px solid gray;
+    text-align: center;
+    background: white;
+   
+    p {
+        margin-top: 10rem;
+        font-size: 5rem;
+        line-height: 8rem;
+    }
+
+    .wrongPhoneNumBtn {
+        @include twoBtns;
+        margin-top: 7rem;
+        height: 11rem;
+        background: $point_orange;
+    }
+}
+.wrongPhoneNumBtn1, .wrongPhoneNumBtn2 {
+    @include twoBtns;
+    width: 36%;
+    margin-top: 5rem;
+}
+
+.wrongPhoneNumBtn1 {
+    background: $btn-gray;
+    color: #333;
+    margin-right: 8rem;
+}
+
+.wrongAdminPass {
+    position: absolute;
+    z-index: 200;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    display: none;
+    margin: 0 auto;
+    width: 80%;
+    height: 55rem;
+    border-radius: 5rem;
+    border: 3px solid gray;
+    text-align: center;
+    background: white;
+   
+    p {
+        margin-top: 15rem;
+        font-size: 5rem;
+        line-height: 8rem;
+    }
+
+    .wrongAdminPassBtn { 
+        @include twoBtns;
+        margin-top: 10rem;
+        height: 11rem;
+        background: $point_orange;
+    }
+}
+
+
+
+
+/////////////////영수증///////////////////////
+
+.receiptPageBox{
+    background-color: rgba(64, 64, 64, 0.6);
+    width: 108rem;
+    height: 192rem;
+    position: relative;
+    display: none;
+    z-index: 200;
+}
+.receiptBox{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+    width: 90rem;
+    height: 150rem;
+    background-color: #fff;
+    border-radius: 3rem;
+    margin: 0 auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.topBar{
+    position: sticky;
+    top: 0;
+    width: 90rem;
+    height: 9rem;
+    background-color: #595959;
+    border-radius: 3rem 3rem 0rem 0rem;
+}
+
+.printBtn{
+    border: 0; 
+    width: 9rem;
+    height: 5rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    margin-left: 70rem;
+    background-color: #ECE9E9;
+    display: inline-block;
+    letter-spacing: 0.15rem;
+}
+.printXBtn{
+    display: inline-block;
+    border: 0; 
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1.5rem;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-left: 1.5rem;
+    margin-top: 2rem;
+    background-color: transparent;
+    color: white;
+}
+.receiptLogo{
+    width: 60rem;
+    margin-top: 9rem;
+    //margin-left: 15rem;
+}
+.logoImgBox{
+    display: flex;
+    justify-content: center;
+}
+.yogurtUrl{
+    margin-top: 1rem;
+    font-size: 2.3rem;
+    display: flex;
+    justify-content: center;
+}
+.orderNumBox{
+    display: flex;
+    justify-content: center;
+}
+.orderText{
+    margin-top: 7rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    display: inline-block;
+    color: #333;
+}
+.orderNum{
+    margin-left: 3rem;
+    font-size: 3.5rem;
+    color: #333;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 7rem;
+}
+
+.orderListTitle{
+    width:90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+
+    p {
+        text-align: center;
+    }
+}
+
+hr{
+    width:90%;
+    margin: 0 auto;
+    border: none;
+    border-top: 0.25rem dashed #444;
+    height: 0.5rem;
+}
+
+.storeInfo{
+    margin: 0 auto;
+    margin-top: 5rem;
+    width: 90%;
+
+    hr{
+        width: 100%;
+    }
+}
+
+.storeInfoText{
+    font-size: 3rem;
+    color: #333;
+    margin: 1.5rem;
+}
+
+.orderList {
+    width:90%;
+    margin: 0 auto;
+    margin-left: 6rem;
+    p { 
+        text-align: center;
+        width: 31%;
+    }
+}
+
+.receiptBasicText{
+    font-size: 3rem;
+    color: #333;
+    margin: 1.5rem 0.8rem;
+    display: inline-block;
+}
+.etcText{
+    margin: 0 auto;
+    font-size: 3rem;
+    color: #333;
+    margin: 1.5rem;
+    display: inline-block;
+}
+
+.taxableBox {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.taxableAmount{
+    font-size: 3rem;
+    display: inline-block;
+}
+.vatTextBox {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.vatBox{
+    display: inline-block;
+    font-size: 3rem;
+}
+.etcTextBox{
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 90%;
+}
+
+.totalPriceTextBox {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.totalPriceText{
+    font-size: 3.5rem;
+    color: #333;
+    margin: 1.5rem;
+    font-weight: bold;
+    display: inline-block;
+}
+.totalPrice{
+    display: inline-block;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+.paymentInfoBox{
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 2rem;
+
+    hr {
+        width: 100%;
+    }
+}
+.creditCard{
+    margin-top: 2rem;
+    display: inline-block;
+    font-size: 3rem;
+}
+.creditCardPrice{
+    display: inline-block;
+    font-size: 3rem;
+    margin-top: 2rem;
+}
+.remainingPointsText {
+    margin-top: 2rem;
+    font-size: 3rem;
+    display: inline-block;
+}
+.remainingPoints{
+    font-size: 3rem;
+    display: inline-block;
+    margin-top: 2rem;
+}
+.creditPriceBox{
+    display: flex;
+    justify-content: space-between;
+}
+.remainingPointBox{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pointPaymentBox{
+    display: flex;
+    justify-content: space-between;
+}
+.pointPaymentText {
+    margin-top: 2rem;
+    font-size: 3rem;
+    display: inline-block;
+}
+.pointPayment{
+    font-size: 3rem;
+    display: inline-block;
+    margin-top: 2rem;
+}
+.receiptBottomBox{
+    margin-top: 2rem;
+}
+.barCode{
+    width: 60rem;
+}
+.pointUseGuide1{
+    font-size: 5rem;
+    font-weight: bold;
+}
+.pointUseGuide2{
+    font-size: 3.5rem;
+
+    span {
+        font-size: 4.5rem;
+        color: #e20101;
+        font-weight: 900;
+    }
+}
+.savePointGuide{
+    font-size: 4.5rem;
+}
+.popupBg{
+    display: none;
+    position: relative;
+    background: rgba(0, 0, 0, 0.404);
+    width: 100%;
+    height: 100%;
+    z-index: 155; 
+}

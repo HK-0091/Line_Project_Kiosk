@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding:0;
+    font-size: 10px;
+    //font-family: 'Jua', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    border: none;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+p {
+    letter-spacing: 0.2rem;
+}
+
+i {
+    font-size: 5rem;
+    color: white;
+}
+
+button, input[type="submit"], input[type="button"] {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5.5rem;
+    font-size: 4rem;
+    letter-spacing:0.4rem;
+
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.pointModal, .payModal, .toppingModal, .inPointModal, .resultpointModal{
+    position:absolute;
+    bottom: 0;
+    transform: translateY(159rem);
+    width: 108rem;
+    height: 158rem;
+    border: {
+        top-right-radius: 20rem;
+        top-left-radius: 20rem;
+    }
+    z-index: 150;
+    background: white; 
+    box-shadow: 0 -10px 55px 10px rgb(234, 234, 234) inset;
+    transition: 0.4s linear all;
+}
+
+.inPointModal, .resultpointModal {
+    display: none;
+    transform: translateY(0);
+}

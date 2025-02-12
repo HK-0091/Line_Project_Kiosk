@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+@mixin twoBtns {
+    width: 45%;
+    height: 12rem;
+    font-size: 5rem;
+    color: white;
+    background: $point_orange;
+    padding-top: 1.1rem;
+    padding-bottom: 2rem;
+}
+@mixin resultPointBox{
+    width: 35rem;
+    height: 9rem;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 -2px 4px 4px rgb(234, 234, 234) inset;
+}
+@mixin pointBtn{
+    width: 30rem;
+    height: 9rem;
+    font-size: 5rem;
+    border: 0;
+    line-height: 10rem;
+    border-radius: 15px;
+}
+@mixin paymentChoiceText{
+    font-size: 2.5rem;
+    text-align: center;
+    position: absolute;
+    color:white;
+}
+@mixin paymentBox{
+    width: 30rem;
+    height: 30rem;
+    background: white;
+    border-radius: 2.5rem;
+    border: 2px solid #f6f4f4;
+    box-shadow: 2px 2px 3px 0px #888;
+    cursor: pointer;
+}
+@mixin pointNumPad{
+    background-color: $signature_blue;
+    color: #fff;
+    width: 15rem;
+    height: 11rem;
+    font-size: 5rem;    
+    line-height: 11rem;
+    text-align: center;
+    margin-top: 3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: 0;
+}
+
+@mixin adminNumPad{
+    background-color: $signature_blue;
+    color: #fff;
+    width: 11rem;
+    height: 11rem;
+    font-size: 5rem;    
+    line-height: 11rem;
+    text-align: center;
+    margin-top: 3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: 0;
+}

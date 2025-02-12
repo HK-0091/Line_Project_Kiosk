@@ -1,0 +1,605 @@
+doctype html
+html(lang="ko")
+    head
+        link(rel="shortcut icon" type="image/x-icon" href="./images/mascot.ico")
+        meta(charset="utf-8")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet") 
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet")
+        link(rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css")
+        script(src="http://code.jquery.com/jquery-latest.min.js")
+        link(rel="stylesheet" href="./style/main.css")
+        title Yogurt world
+    body
+        .popupBg#popupBg
+        .basicBox
+            //- 홈화면
+            .homeMainModal#homeMainModal
+                #slideBox
+                    .firstHome
+                        img(class="logoImg" src="./images/logo.svg")
+                        img(class="img" src="./images/iceCream3.jpg")
+                    img(class="img" src="./images/iceCream2.jpg")
+                    img(class="img" src="./images/bread.jpg")
+                    img(class="img" src="./images/yogurt.jpg")
+                .homeMainBox
+                    .homeMainPortTextBox
+                        p.homeMainPortText 본 페이지는 포트폴리오용으로 제작되었습니다. 
+                    .homeMainGrayBox
+                        .homeMainBtnBox
+                            Button.homeMainBtnA#homeMainBtnA 포장
+                            Button.homeMainBtnB#homeMainBtnB 매장
+                button(class="adminPageBtn" id="adminPageBtn") admin
+                .adminModalPage#adminModalPage
+                    .adminModalContent#adminModalContent
+                        .adminEnterName 관리자 페이지
+                            // input(type="number" id="inputPass" class="inputPass" name="inputPass")
+                            input(type="password" id="inputPass" class="inputPass" name="inputPass" readonly="readonly" placeholder="1234")
+                            .adminNumPad
+                                .adminFirstLine
+                                    button.adminNum1#adminNum1(type="button") 1
+                                    button.adminNum2#adminNum2(type="button") 2
+                                    button.adminNum3#adminNum3(type="button") 3
+                                .adminSecondLine
+                                    button.adminNum4#adminNum4(type="button") 4
+                                    button.adminNum5#adminNum5(type="button") 5
+                                    button.adminNum6#adminNum6(type="button") 6
+                                .adminThirdLine
+                                    button.adminNum7#adminNum7(type="button") 7
+                                    button.adminNum8#adminNum8(type="button") 8
+                                    button.adminNum9#adminNum9(type="button") 9
+                                .adminLastLine
+                                    button.adminNumDelete#adminNumDelete(type="button") CLR
+                                    button.adminNum0#adminNum0(type="button") 0
+                                    button.adminNumOneX#adminNumOneX(type="button") 
+                                        i.xi-backspace
+                            button(class="adminEnterBtn" type="submit" id="adminEnterBtn") 입력완료
+                        button(class="close" id="close") 뒤로가기
+
+            
+            .menuMainScreenView#menuMainScreenView 
+                //- 장시간 대기 시 알림
+                .menuWaitBox#menuWaitBox
+                    ol
+                        li(class="menuWaitSpan" id="menuWaitSpan") 장시간 대기로<br>홈화면으로 이동됩니다
+                        li(class="menuWaitCount" id="menuWaitCount")
+                        li(class="menuWaitBtnBox" id="menuWaitBtnBox")
+                            button(class="menuWaitBtn" id="menuWaitBtn") 연장하기
+
+                //- 메뉴 선택 & 장바구니
+                header(class="menuMainScreenHead")
+                    article.menuSelectIO#menuSelectIO 
+                        .selectStart#selectStart
+                        .selectList#selectList 
+                            .packing#packing 포장
+                            .store#store 매장
+                    img(class="menuHomeBtn" src="./images/homeBtn.png")
+                    img(class="menuMainLogo" src="./images/logo/logoTitle.svg")
+                nav(class="menuMainNav")
+                    button(class="menuMenu1 menuMenu" id="menuMenu1") 추천
+                    button(class="menuMenu2 menuMenu" id="menuMenu2") 아이스크림<br>&그릭요거트 
+                    button(class="menuMenu3 menuMenu" id="menuMenu3") 커피 / 음료
+                    button(class="menuMenu4 menuMenu" id="menuMenu4") 디저트
+                section(class="menuMainSection")
+                    .menuMenuSlideA.menuMenuSlide#menuMenuSlideA
+                    .menuMenuSlideB.menuMenuSlide#menuMenuSlideB
+                    .menuMenuBox#menuMenuBox
+                footer(class="menuMainFooter")
+                    .menuCart#menuCart
+                    .menuResultValue#menuResultValue
+                        .menuTotalResultText#menuTotalResultText 총 결제금액 : 
+                        .menuTotalResultNumber#menuTotalResultNumber 
+                    .menuFootBtnBox#menuFootBtnBox
+                        button(class="menuCartBtn" id="menuCartBtn") 장바구니
+                        span.menuCartNum#menuCartNum 0
+                        button(class="menuPaymentBtn" id="menuPaymentBtn") 결제하기
+            script.
+                
+                //-menu_id
+                let menuIdTemp = `#{menuId}`;
+                let menuId = menuIdTemp.split(',');
+                //-menu_price
+                let menuPriceTemp = `#{menuPrice}`;
+                let menuPrice = menuPriceTemp.split(',');
+                //-menu_amount
+                let menuAmountTemp = `#{menuAmount}`;
+                let menuAmount = menuAmountTemp.split(',');
+                //-menu_cal
+                let menuCalTemp = `#{menuCal}`;
+                let menuCal = menuCalTemp.split(',');
+                //-menu_sugar
+                let menuSugarTemp = `#{menuSugar}`;
+                let menuSugar = menuSugarTemp.split(',');
+                //-menu_protein
+                let menuProteinTemp = `#{menuProtein}`;
+                let menuProtein = menuProteinTemp.split(',');
+                //-menu_fat
+                let menuFatTemp = `#{menuFat}`;
+                let menuFat = menuFatTemp.split(',');
+                //-menu_salt
+                let menuSaltTemp = `#{menuSalt}`;
+                let menuSalt = menuSaltTemp.split(',');
+                //-menu_caffeine
+                let menuCaffeineTemp = `#{menuCaffeine}`;
+                let menuCaffeine = menuCaffeineTemp.split(',');
+                
+                //menuQueue
+                class menuQueue {
+                    constructor(){
+                        this.queueArray = [];
+                    }
+                    pushDiv( itemValue ){
+                        this.queueArray.push( itemValue );
+                    }
+                    unshiftDiv( itemValue ){
+                        this.queueArray.unshift( itemValue );
+                    }
+                    popDiv(){
+                        return this.queueArray.pop();
+                    }
+                    shiftDiv(){
+                        return this.queueArray.shift();
+                    }
+                }
+                let menuSlideQueue = new menuQueue();
+
+                //-메인페이지 버튼 클릭시 시작메뉴
+                $(this).click((e) => {
+                    if( e.target.id == `homeMainBtnA` || e.target.id == `homeMainBtnB` ) {
+                        menuSlideQueue.queueArray = [];
+                        function loadMenuA(){
+                            //-1번 배열
+                            menuSlideQueue.pushDiv(`!{recommendationMenu}`);
+                            $('#menuMenuBox').html(menuSlideQueue.queueArray[0]);
+                        }
+                        loadMenuA();
+                        $("#menuMenu1").css('background-color','#0068b7');
+                        $("#menuMenu1").css('color','white');
+                    }
+                })
+
+
+                //-추천버튼 클릭시 메뉴
+                $(".menuMenu1").click(()=>{
+                    menuSlideQueue.queueArray = [];
+                    function loadMenuA(){
+                        //-1번 배열
+                        menuSlideQueue.pushDiv(`!{recommendationMenu}`);
+                        $('#menuMenuBox').html(menuSlideQueue.queueArray[0]);
+                    }
+                    loadMenuA();
+                    $("#menuMenu1").css('background-color','#0068b7');
+                    $("#menuMenu1").css('color','white');
+                });
+
+                //-아이스크림/그릭요거트 클릭시 메뉴
+                $(".menuMenu2").click(()=>{
+                    menuSlideQueue.queueArray = [];
+                    function loadMenuB(){
+                        //-1번 배열
+                        menuSlideQueue.pushDiv(`!{icecreamGreekyogurt}`);
+                        $('#menuMenuBox').html(menuSlideQueue.queueArray[0]);
+                    }
+                    loadMenuB();
+                    $("#menuMenu2").css('background-color','#0068b7');
+                    $("#menuMenu2").css('color','white');
+                });
+                
+                //-커피 클릭시 메뉴
+                $(".menuMenu3").click(()=>{
+                    menuSlideQueue.queueArray = [];
+                    function loadMenuC(){
+                        //-1번 배열
+                        menuSlideQueue.pushDiv(`!{coffee}`);
+                        //-2번 배열
+                        menuSlideQueue.pushDiv(`!{coffee_1}`);
+                        $('#menuMenuBox').html(menuSlideQueue.queueArray[0]);
+                    }
+                    loadMenuC();
+                    $("#menuMenu3").css('background-color','#0068b7');
+                    $("#menuMenu3").css('color','white');
+                });
+                
+                //-디저트 클릭시 메뉴
+                $(".menuMenu4").click(()=>{
+                    menuSlideQueue.queueArray = [];
+                    function loadMenuC(){
+                        //-1번 배열
+                        menuSlideQueue.pushDiv(`!{dessert}`);
+                        $('#menuMenuBox').html(menuSlideQueue.queueArray[0]);
+                    }
+                    loadMenuC();
+                    $("#menuMenu4").css('background-color','#0068b7');
+                    $("#menuMenu4").css('color','white');
+                });
+ 
+                //-화살표 왼쪽
+                $("#menuMenuSlideA").on("click",()=>{
+                    let tempQueueA = menuSlideQueue.popDiv();
+                    if($("#menuMenuBox").html() == tempQueueA){
+                        menuSlideQueue.unshiftDiv( tempQueueA );
+                        let tempQueueB = menuSlideQueue.popDiv();
+                        menuSlideQueue.unshiftDiv( tempQueueB );
+                        $('#menuMenuBox').html( tempQueueB );
+                    }else{
+                        $('#menuMenuBox').html( tempQueueA );
+                        menuSlideQueue.unshiftDiv( tempQueueA );
+                    }
+                });
+                //-화살표 오른쪽
+                $("#menuMenuSlideB").on("click",()=>{
+                    let tempQueueB = menuSlideQueue.shiftDiv();
+                    if($("#menuMenuBox").html() == tempQueueB){
+                        menuSlideQueue.pushDiv( tempQueueB );
+                        let tempQueueC = menuSlideQueue.shiftDiv();
+                        menuSlideQueue.pushDiv( tempQueueC );
+                        $('#menuMenuBox').html( tempQueueC );
+                    }else{
+                        $('#menuMenuBox').html( tempQueueB );
+                        menuSlideQueue.pushDiv( tempQueueB );
+                    }
+                });
+
+             
+                
+               
+               
+
+        //-토핑 선택
+        section#toppingWrap.toppingWrap.toppingModal
+            #toppingFruit.toppingFruit
+                #toppingImg.toppingImg 
+                    img(src="메뉴에서 클릭한 거 이미지")
+                #toppingFruitList.toppingFruitList 
+                    //테이블에서 가져올 토핑
+            #toppingNutList.toppingNutList
+                //테이블에서 가져올 토핑 
+            #toppingSpoon.toppingSpoon 
+                p 숟가락 (필수 선택)
+                button.spoonYes O
+                button X
+
+            #toppingBtns.toppingBtns
+                button#toppingNo.toppingNo 뒤로가기
+                button#toppingYes.toppingYes 선택완료
+
+
+        //- 포인트 사용 전 결제 방법 선택
+        section
+            .selectPayment
+                img(class="paymentMainLogo" src="./images/logo/logoTitle.svg")
+                .stepBar
+                    img(src="./images/stepBar1.png" class="stepImg" alt="step bar")
+                    p.payChoiceTextOne 결제 방법 선택
+                    p.payChoiceTextTwo 포인트 적립
+                    p.payChoiceTextThree 결제하기
+
+                p.payChoiceTitle 결제 방법을 선택해주세요.
+                .payChoiceImg 
+                    .payCardBox
+                        img(src="./images/creditCard.png" class="payChoiceCard" id="payChoiceCard" alt="credit card")
+                        p.payChoiceCardText 카드결제
+                    .paySamsungBox
+                        img(src="./images/samsungPayIcon.png" class="payChoiceSamsung" id="payChoiceSamsung" alt="samsung pay icon")
+                        p.payChoicePayText 삼성페이
+                    .payPointBox
+                        img(src="./images/payChoicePoint.png" class="payChoicePoint" id="payChoicePoint" alt="point")
+                        p.payChoicePointText 포인트 적립/사용
+                .payChoicepaymentTextBox
+                    p.payChoicePaymentText 결제 금액을 확인 해주세요.
+                .payChoiceTotalBox
+                    p.payChoiceResult 총 결제 금액 : <!--{}원-->
+                    .totalPayment#totalPayment
+                .bottomBtnBox 
+                    button.payChoiceBackBtn 뒤로가기
+        
+        //- 포인트 회원 번호 입력
+        section 
+            .pointModal                
+                    .pointNumInputTextBox
+                        p.pointNumInnumText 회원 번호 입력
+                    .pointNumInputBox
+                        input(class="inPhoneNum" type="text" id="inPhoneNum" placeholder="전화번호 10-11자리" readonly)
+                        .pointNumPad
+                            .pointFirstLine
+                                button.pointNum1#pointNum1(type="button") 1
+                                button.pointNum2#pointNum2(type="button") 2
+                                button.pointNum3#pointNum3(type="button") 3
+                            .pointSecondLine
+                                button.pointNum4#pointNum4(type="button") 4
+                                button.pointNum5#pointNum5(type="button") 5
+                                button.pointNum6#pointNum6(type="button") 6
+                            .pointThirdLine
+                                button.pointNum7#pointNum7(type="button") 7
+                                button.pointNum8#pointNum8(type="button") 8
+                                button.pointNum9#pointNum9(type="button") 9
+                            .pointLastLine
+                                button.pointNumDelete#pointNumDelete(type="button") CLR
+                                button.pointNum0#pointNum0(type="button") 0
+                                button.pointNumOneX#pointNumOneX(type="button")
+                                    i.xi-backspace
+                    .pointNumBotBox 
+                        button.pointNumBackBtn(type="button") 뒤로가기
+                        button.pointNumComBtn(type="button") 입력완료
+       
+        //- 사용할 포인트 입력
+        section     
+            .inPointModal
+                .usePointBox
+                    .inPointBoxTotalPrice#inPointBoxTotalPrice
+                    .pointNow
+                        p.usePointNowText 현재 포인트
+                        input(readonly="readonly" class="nowPoint")
+                        p.pointUnit P
+                    .pointUse
+                        p.usePointText 포인트 사용
+                        input(readonly="readonly" class="usePointScreen" id="usePointScreen" type="text")
+                        p.pointUnit P
+                .pointGuideBox
+                    .usePointGuide 
+                        p.pointUseGuide1 포인트 적립만 원할 시
+                        p.pointUseGuide2 
+                            |포인트 사용에 '
+                            span 0
+                            |' 을 입력해주세요.
+                .pointNumPad
+                    .pointFirstLine
+                        button.usePoint1#usePoint1(type="button") 1
+                        button.usePoint2#usePoint2(type="button") 2
+                        button.usePoint3#usePoint3(type="button") 3
+                    .pointSecondLine
+                        button.usePoint4#usePoint4(type="button") 4
+                        button.usePoint5#usePoint5(type="button") 5
+                        button.usePoint6#usePoint6(type="button") 6
+                    .pointThirdLine
+                        button.usePoint7#usePoint7(type="button") 7
+                        button.usePoint8#usePoint8(type="button") 8
+                        button.usePoint9#usePoint9(type="button") 9
+                    .pointLastLine
+                        button.usePointDelete(type="button") CLR
+                        button.usePoint0#usePoint0(type="button") 0
+                        button.usePointOneX(type="button")
+                            i.xi-backspace
+                .pointNumBotBox 
+                    button.usePointbackBtn 뒤로가기
+                    button(class="usePointcomBtn") 입력완료
+
+
+        //- 포인트 사용 여부 확인
+        section 
+            .resultpointModal
+                .resultPointBox
+                    .resultPointPaymentBox
+                        p.resultPointText 결제금액
+                        input(class="resultPointPay" readonly="readonly")
+                        p.payUnit  원
+                    .resultPointusePointBox
+                        p.resultPointText <!--{} 값 가져오기--> 포인트 사용
+                        input(class="resultPointUsepoint" readonly="readonly")
+                        p.pointUnit  P
+                    .resultPointTotalPayBox
+                        p.resultPointText <!--{} 값 가져오기--> 총 결제금액
+                        input(class="resultPointPayTotal" id="resultPointTotal" readonly="readonly")
+                        p.payUnit  원
+                    p.resultPointGuide.resultPointGuideNumber 
+                    p.resultPointGuide 결제 후 잔여 포인트
+                p.resultPointQst 정말 포인트를 사용하시겠습니까?
+                .resulayPointNumBotBox 
+                    Button.resultPointBackBtn 뒤로가기   
+                    Button.resultPointComBtn 사용하기
+        
+        //- 포인트 사용 후 결제 방법 선택
+        section 
+            .onlyPaymentBox    
+                img(class="paymentMainLogo" src="./images/logo/logoTitle.svg")
+                .stepBar
+                    img(src="./images/stepBar1.png" class="stepImg" alt="step bar")
+                    p.payChoiceTextOne 결제 방법 선택
+                    p.payChoiceTextTwo 포인트 적립
+                    p.payChoiceTextThree 결제하기
+                p.payChoiceTitle 결제 방법을 선택해주세요.
+                .payChoiceImg 
+                    .onlyPayCardBox
+                        img(src="./images/creditCard.png" class="payChoiceCard" id="payChoiceCard" alt="credit card")
+                        p.payChoiceCardText 카드결제
+                    .onlyPaySamsungBox
+                        img(src="./images/samsungPayIcon.png" class="payChoiceSamsung" id="payChoiceSamsung" alt="samsung pay icon")
+                        p.payChoicePayText 삼성페이
+                    .disabledPoint#noUsePoint
+                        img(src="./images/payChoicePoint.png" class="payChoicePoint" alt="point")
+                        p.payChoicePointText 포인트 적립/사용
+                .payChoicepaymentTextBox
+                    p.payChoicePaymentText 결제 금액을 확인 해주세요.
+                .payChoiceTotalBox
+                    p.payChoiceResult 총 결제 금액 : <!--{}원-->
+                    .resultTotalPayment
+                .bottomBtnBox 
+                    Button.onlyPayBackBtn 뒤로가기 
+
+
+        //- 카드 결제
+        section#creditCardWrap.creditCardWrap.payModal
+            .creditCardContent  
+                p.creditCardTitle 신용/체크카드 결제
+                p.creditCardText 
+                    |카드를 그림과 같이
+                    br
+                    |IC카드 리더기에 꽂아주세요!
+                p.creditCardWarning 결제가 완료될 때까지 카드를 빼지 마세요.
+
+                .creditCardImgs 
+                    img.creditCardSlotImg(src="../images/creditCardSlot.png" alt="creditCardSlot")
+                    img.creditCardImg(src="../images/creditCard.png" alt="creditCard")
+                
+                #payTotalPriceBox.payTotalPriceBox
+                    p 총 결제 금액
+                    p.payTotalPrice#payTotalPrice
+                
+            .creditCardBtns
+                button#creditCardCancleBtn.creditCardCancleBtn 취소
+                button#creditCardEndBtn.creditCardEndBtn 승인요청
+
+        //- 삼성 페이 결제
+        section#samsungPayWrap.samsungPayWrap.payModal    
+            #samsungPayContent.samsungPayContent
+                p.samsungPayTitle 삼성 페이 결제
+                p.samsungPayText
+                    |휴대폰 뒷면을
+                    br
+                    |IC카드 리더기에 접촉해주세요!
+                p.samsungPayWarning 결제가 완료될 때까지 휴대폰을 떼지 마세요.
+                .samsungPayImgs 
+                    img.samsungPaySlotImg(src="../images/creditCardSlot.png" alt="creditCardSlot")
+                    img.samsungPayImg(src="../images/samsungPay.png" alt="samsungPay")
+                #payTotalPriceBox.payTotalPriceBox
+                    p 총 결제 금액
+                    p.payTotalPrice#payTotalPrice
+            .samsungPayBtns
+                button#samsungPayCancleBtn.samsungPayCancleBtn 취소
+                button#samsungPayEndBtn.samsungPayEndBtn 승인요청
+
+        //- 결제 취소 팝업
+        #payCanclePopup.payCanclePopup 
+            p 결제를 취소하시겠습니까?
+
+            #payCancleBtn.payCancleBtn
+                button#payCancleNo 아니요  
+                button#payCancleYes 예
+
+        //- 결제 완료
+        section#payEndWrap.payEndWrap 
+            #payEndNotice.payEndNotice
+                p 결제가 완료되었습니다.
+                p 카드를 꼭 회수해 주세요.
+                img(src="./images/mascot.ico")   
+
+            #payEndReceipt.payEndReceipt
+                .savePointGuide#savePointGuide 
+                p 영수증을 출력하시겠습니까?
+
+            #payEndReceiptBtns.payEndReceiptBtns
+                button#payEndReceiptYes.payEndReceiptYes 예
+                button#payEndReceiptNo.payEndReceiptNo 아니요
+
+        //- 영수증
+        section
+            .receiptPageBox
+                .receiptBox 
+                    .topBar 
+                        button(class="printBtn" onclick="printGo(); homePage();") PRINT
+                        button(class="printXBtn" onclick="printX();") X
+                    .printArea#printArea
+                        .logoImgBox
+                            img(class="receiptLogo" src="./images/logoBlack.svg")
+                        p.yogurtUrl http://www.yogurtworld.co.kr
+                        .orderNumBox
+                            p.orderText 주문번호 
+                            p.orderNum 07
+                        .storeInfo
+                            hr
+                            p.storeInfoText 안산 중앙점
+                            p.storeInfoText 대표자 : 김민우, 강광호, 금새롬, 이서연
+                            p.storeInfoText 주소: 경기도 안산시 단원구 123-4번지 123호
+                            p.storeInfoText 전화번호: 031-1234-5678
+                        hr
+                        .orderListTitle
+                            p.receiptBasicText 제품명
+                            p.receiptBasicText 수량
+                            p.receiptBasicText 금액
+                        hr
+                        hr
+                        .orderList 
+                            p#receiptOrderName.receiptBasicText
+                            p#receiptOrderCount.receiptBasicText
+                            p#receiptOrderPrice.receiptBasicText
+                        hr
+                        hr
+                        .etcTextBox 
+                            .taxableBox
+                                p.etcText 공급가액 :
+                                p.taxableAmount
+                            .vatTextBox 
+                                p.etcText 부 가 세 :
+                                p.vatBox
+                            .totalPriceTextBox 
+                                p.totalPriceText 결제 금액 : 
+                                p.totalPrice
+                        .paymentInfoBox
+                            hr
+                            .creditPriceBox
+                                p.creditCard &nbsp; [ 신용카드 ]
+                                p.creditCardPrice
+                            .pointPaymentBox
+                                p.pointPaymentText &nbsp; [ 사용 포인트 ]
+                                p.pointPayment
+                            .remainingPointBox
+                                p.remainingPointsText &nbsp; [ 잔여포인트 ]
+                                p.remainingPoints
+                            .receiptBottomBox
+                                hr
+                                hr
+                                br
+                                br
+
+        //- 대기 번호 팝업
+        #waitingNumPopup.waitingNumPopup
+            p#waitingNumCount.waitingNumCount 10
+            #waitingNum.waitingNum
+                img(src="./images/waitingNumPaper.png" alt="waiting number")
+                p 주문번호
+                P 07
+           
+            p.waitingNumText1 
+                |준비가 완료되면
+                br
+                |주문번호를 불러드립니다!
+            p.waitingNumText2 주문번호를 꼭 확인해주세요.
+            button#goHomeBtn.goHomeBtn 홈 화면으로
+
+        //- 회원 번호 잘못 입력시 알림
+        #wrongPhoneNum.wrongPhoneNum
+            p#wrongPhoneNumText.wrongPhoneNumText 
+                |잘못된 번호입니다.
+                br
+                |번호를 확인해주세요.
+            button#wrongPhoneNumBtn.wrongPhoneNumBtn 확인
+
+
+        //- 포인트 적립 후 뒤로가기 클릭 시 알림
+        #wrongPhoneNum2.wrongPhoneNum
+            p#wrongPhoneNumText.wrongPhoneNumText 
+                |주문이 취소되고
+                br
+                |처음 화면으로 돌아갑니다.
+            button#wrongPhoneNumBtn1.wrongPhoneNumBtn1 취소
+            button#wrongPhoneNumBtn2.wrongPhoneNumBtn2 확인
+            
+
+        //- 사용 가능 포인트 초과 입력 시 알림
+        #wrongPhoneNum3.wrongPhoneNum
+            p#wrongPhoneNumText.wrongPhoneNumText 
+                |사용 가능 포인트가 초과되었습니다.
+                br
+                |다시 입력해 주세요.
+            button#wrongPhoneNumBtn3.wrongPhoneNumBtn 확인
+
+
+        //- 관리자 페이지 패스워드 잘못 입력시 알림
+        .wrongAdminPass#wrongAdminPass3
+            p.wrongAdminPassText#wrongAdminPassText 패스워드를 확인해주세요. 
+            button.wrongAdminPassBtn#wrongAdminPassBtn3 확인
+
+
+
+
+        script(type="text/javascript" src="./js/index.js")
+        script(src="./js/phoneNum.js") 
+        script(src="./js/point.js") 
+        script(type="text/javascript" src="./js/kwangho.js")
+        script(type="text/javascript" src="./js/members.js")
+        script(type="text/javascript" src="./js/homeMenuWait.js")
+        script(type="text/javascript" src="./js/admin.js")
+        script(type="text/javascript" src="./js/payPart.js")
